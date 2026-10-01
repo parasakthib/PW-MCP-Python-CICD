@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright, expect
 class TestMCP:
     def test_add_todo_item(self):
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False)
+            browser = p.chromium.launch(headless=True)
             page = browser.new_page()
 
             # Navigate to TodoMVC (React reference implementation)
