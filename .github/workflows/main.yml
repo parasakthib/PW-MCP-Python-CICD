@@ -1,0 +1,19 @@
+name: Playwright MCP Tests
+on: [push, pull_request]
+
+jobs:
+  mcp-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - name: Install playwright
+        run: pip install playwright    
+      - name: Install mcp
+        run: npm install @playwright/mcp
+      - name: Install browsers
+        run: python -m playwright install 
+      - name: Run MCP tests
+        run: python tests/test_mcp.py
